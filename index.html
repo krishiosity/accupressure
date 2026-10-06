@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Everyday acupressure for headaches, neck and back tension, stress, sleep, nausea, and more. Pick what you're feeling, where you are, and tap a point to zoom in. With cited research.">
+<meta name="description" content="Everyday acupressure for headaches, neck and back tension, stress, sleep, nausea, and health conditions like migraine, arthritis, IBS, and high blood pressure. Pick what you're feeling, where you are, and tap a point to zoom in. With cited research.">
 <title>Everyday Acupressure Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -147,6 +147,12 @@ ol.steps li::marker{font-family:var(--mono);color:var(--lav);font-size:12px}
 .opt{font-size:11px;text-transform:none;letter-spacing:0;color:var(--muted);font-weight:500;margin-left:6px}
 .phasechip span{font-family:var(--mono);font-size:10.5px;font-weight:400;margin-left:6px;opacity:.75}
 .resline{font-size:14px;color:var(--muted)}
+.grouplabel{margin:2px 0 -2px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600}
+.condnote{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;background:var(--lavgray);border:1px solid var(--lavgray-line);border-radius:6px;padding:14px 16px;font-size:14px}
+.condnote b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--lav-deep);margin-bottom:4px}
+.condnote p{margin:0}
+.condwarn{border-left:3px solid var(--warn-ink);padding-left:12px}
+.condwarn b{color:var(--warn-ink)}
 .resline b{color:var(--lav-deep);font-weight:600}
 .reslist{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
 .res{all:unset;cursor:pointer;display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:12px 6px;border-bottom:1px solid var(--rule);border-radius:3px}
@@ -256,27 +262,27 @@ img{max-width:100%}
 const PREG = {avoid:"Avoid in pregnancy", gentle:"Pregnant? Ask your clinician first", safe:"Often used in pregnancy, with a clinician's OK"};
 const POINTS = [
  // FRONT
- {id:"GV20",view:"front",x:150,y:26,bi:false,code:"GV 20",py:"Bǎihuì",en:"Hundred Meetings",mer:"Governing Vessel",preg:"gentle",concerns:["headache","stress","energy"],where:["desk","bed"],
+ {id:"GV20",view:"front",x:150,y:26,bi:false,code:"GV 20",py:"Bǎihuì",en:"Hundred Meetings",mer:"Governing Vessel",preg:"gentle",concerns:["headache","stress","energy","migraine"],where:["desk","bed"],
   find:["Put your thumbs on the tips of both ears.","Trace a line straight up over the top of your head with your middle fingers.","The point is where your fingers meet on the midline, at the crown, often in a slight dip."],
   press:"Press gently straight down with your middle finger, or make slow small circles.",hold:60,
   uses:"Used for headaches at the top of the head, mental fog, and a busy mind.",
   caution:"Light to moderate pressure only. A sudden, severe headache needs medical care, not acupressure."},
- {id:"YT",view:"front",x:150,y:47,bi:false,code:"EX-HN 3",py:"Yìntáng",en:"Hall of Impression",mer:"Extra point",preg:"safe",concerns:["stress","sleep","headache","sinus"],where:["desk","bed"],
+ {id:"YT",view:"front",x:150,y:47,bi:false,code:"EX-HN 3",py:"Yìntáng",en:"Hall of Impression",mer:"Extra point",preg:"safe",concerns:["stress","sleep","headache","sinus","chemo","hayfever"],where:["desk","bed"],
   find:["Find the inner ends of both eyebrows.","The point is exactly halfway between them, just above the bridge of the nose."],
   press:"Close your eyes. Rest your middle finger on the point and press lightly, or circle slowly.",hold:60,
   uses:"Used for stress, a racing mind at bedtime, frontal headaches, and a stuffy forehead.",
   caution:"Keep pressure light. The area is bony and sensitive."},
- {id:"BL2",view:"front",x:155,y:45,bi:true,code:"BL 2",py:"Cuánzhú",en:"Gathered Bamboo",mer:"Bladder meridian",preg:"safe",concerns:["eyes","headache","sinus"],where:["desk","bed"],
+ {id:"BL2",view:"front",x:155,y:45,bi:true,code:"BL 2",py:"Cuánzhú",en:"Gathered Bamboo",mer:"Bladder meridian",preg:"safe",concerns:["eyes","headache","sinus","hayfever"],where:["desk","bed"],
   find:["Find the inner end of your eyebrow.","Feel for a small notch in the bone just above the inner corner of the eye.","The point sits in that notch."],
   press:"Use both index fingers at once. Press gently upward into the notch, eyes closed.",hold:60,
   uses:"Used for tired, strained eyes after screen time, frontal headaches, and sinus pressure.",
   caution:"Press on the bone, never on the eye itself. Remove contact lenses first if you wear them."},
- {id:"TY",view:"front",x:172,y:47,bi:true,code:"EX-HN 5",py:"Tàiyáng",en:"Great Sun",mer:"Extra point",preg:"safe",concerns:["headache","eyes"],where:["desk","bed","go"],
+ {id:"TY",view:"front",x:172,y:47,bi:true,code:"EX-HN 5",py:"Tàiyáng",en:"Great Sun",mer:"Extra point",preg:"safe",concerns:["headache","eyes","migraine"],where:["desk","bed","go"],
   find:["Find the outer end of your eyebrow and the outer corner of your eye.","Move back about a thumb-width from the point between them.","The point is in the soft hollow of the temple."],
   press:"Press with your fingertips on both sides at once and make slow circles.",hold:60,
   uses:"Used for tension headaches at the sides of the head and eye strain.",
   caution:"Gentle pressure only. The temple has a superficial artery."},
- {id:"LI20",view:"front",x:158,y:62,bi:true,code:"LI 20",py:"Yíngxiāng",en:"Welcome Fragrance",mer:"Large Intestine meridian",preg:"safe",concerns:["sinus"],where:["desk","bed","go"],
+ {id:"LI20",view:"front",x:158,y:62,bi:true,code:"LI 20",py:"Yíngxiāng",en:"Welcome Fragrance",mer:"Large Intestine meridian",preg:"safe",concerns:["sinus","hayfever"],where:["desk","bed","go"],
   find:["Find the widest part of your nostril.","Slide your finger sideways into the groove between the nostril and the cheek."],
   press:"Use both index fingers at once. Press inward and slightly up, with small circles.",hold:60,
   uses:"Used to ease a blocked nose and sinus pressure.",
@@ -291,68 +297,83 @@ const POINTS = [
   press:"Lay three fingers flat over the point. Press softly and breathe slowly into the chest.",hold:90,
   uses:"Used for chest tightness that comes with anxiety and for shallow, held breathing.",
   caution:"Chest pain, pressure spreading to the arm or jaw, or shortness of breath needs emergency care. Do not use acupressure for it."},
- {id:"CV12",view:"front",x:150,y:206,bi:false,code:"CV 12",py:"Zhōngwǎn",en:"Middle Cavity",mer:"Conception Vessel",preg:"avoid",concerns:["digestion","nausea"],where:["bed"],
+ {id:"CV12",view:"front",x:150,y:206,bi:false,code:"CV 12",py:"Zhōngwǎn",en:"Middle Cavity",mer:"Conception Vessel",preg:"avoid",concerns:["digestion","nausea","ibs"],where:["bed"],
   find:["Find your navel and the bottom tip of your breastbone.","The point is on the midline, halfway between them."],
   press:"Lying down, rest your fingertips on the point and press gently as you breathe out.",hold:90,
-  uses:"Used for indigestion, bloating, and an unsettled stomach.",
+  uses:"Used for indigestion, bloating, and an unsettled stomach. Included in an IBS self-acupressure trial.",
   caution:"Wait at least an hour after eating. Severe or persistent belly pain needs medical care."},
- {id:"ST25",view:"front",x:168,y:236,bi:true,code:"ST 25",py:"Tiānshū",en:"Heaven's Pivot",mer:"Stomach meridian",preg:"avoid",concerns:["digestion"],where:["bed"],
+ {id:"ST25",view:"front",x:168,y:236,bi:true,code:"ST 25",py:"Tiānshū",en:"Heaven's Pivot",mer:"Stomach meridian",preg:"avoid",concerns:["digestion","constipation","ibs"],where:["bed"],
   guide:{from:[150,236],label:"3 fingers",lx:159,ly:229},
   find:["Find your navel.","Lay three fingers sideways out from it, on either side.","The point is at the outer edge of your third finger."],
   press:"Use fingertips on both sides at once. Press gently and circle clockwise, the direction of digestion.",hold:90,
-  uses:"Used for bloating, constipation, and loose stools.",
+  uses:"Used for bloating, constipation, and loose stools. Included in an IBS self-acupressure trial.",
   caution:"Acute or severe belly pain needs medical care."},
- {id:"LI11",view:"front",x:233,y:231,bi:true,code:"LI 11",py:"Qūchí",en:"Pool at the Bend",mer:"Large Intestine meridian",preg:"gentle",concerns:["neck"],where:["desk","go"],
+ {id:"LI11",view:"front",x:233,y:231,bi:true,code:"LI 11",py:"Qūchí",en:"Pool at the Bend",mer:"Large Intestine meridian",preg:"gentle",concerns:["neck","carpal","hbp","hayfever"],where:["desk","go"],
   find:["Bend your elbow to 90° with the palm facing your chest.","Find the outer end of the elbow crease, on the thumb side.","The point is in the hollow at the end of that crease."],
   press:"Hold your forearm with the opposite hand and press firmly with the thumb.",hold:60,
-  uses:"Used for elbow and forearm aches from typing and mouse work.",
+  uses:"Used for elbow and forearm aches from typing and mouse work. Traditionally also used for allergy symptoms and in blood pressure routines.",
   caution:"Avoid if the elbow is injured or swollen."},
- {id:"LI10",view:"front",x:239,y:251,bi:true,code:"LI 10",py:"Shǒusānlǐ",en:"Arm Three Miles",mer:"Large Intestine meridian",preg:"gentle",concerns:["neck","energy"],where:["desk","go"],
+ {id:"LI10",view:"front",x:239,y:251,bi:true,code:"LI 10",py:"Shǒusānlǐ",en:"Arm Three Miles",mer:"Large Intestine meridian",preg:"gentle",concerns:["neck","energy","carpal"],where:["desk","go"],
   guide:{from:[233,231],label:"3 fingers",lx:244,ly:240},
   find:["Find LI 11 at the outer end of the elbow crease.","Lay three fingers down the forearm toward the wrist, on the thumb side.","The point is in the thick muscle, often very tender."],
   press:"Press firmly with your thumb, or knead the muscle.",hold:60,
-  uses:"Used for forearm strain from phones and keyboards, and tension that runs up into the shoulder.",
+  uses:"Used for forearm strain from phones and keyboards, and tension that runs up into the shoulder. Also used for wrist and forearm strain from repetitive work.",
   caution:"Ease off if you feel tingling into the fingers."},
- {id:"PC6",view:"front",x:239,y:291,bi:true,code:"PC 6",py:"Nèiguān",en:"Inner Pass",mer:"Pericardium meridian",preg:"safe",concerns:["nausea","stress","sleep"],where:["desk","bed","go"],
+ {id:"PC6",view:"front",x:239,y:291,bi:true,code:"PC 6",py:"Nèiguān",en:"Inner Pass",mer:"Pericardium meridian",preg:"safe",concerns:["nausea","stress","sleep","migraine","carpal","chemo"],where:["desk","bed","go"],
   guide:{from:[241,313],label:"3 fingers",lx:252,ly:304},short:"The best-studied point. Used for nausea, motion sickness, and anxiety.",
   find:["Turn your palm up.","Lay three fingers across your wrist, with the edge of the first finger on the wrist crease.","The point is just above your third finger, between the two tendons."],
   press:"Press firmly with your thumb, steady or with tiny circles. Do one wrist, then the other.",hold:120,
   uses:"The best-studied acupressure point. Used for nausea and motion sickness, and for anxiety. Travel wristbands press here.",
   caution:"Persistent vomiting, or vomiting with severe pain, needs medical attention."},
- {id:"LU7",view:"front",x:248,y:300,bi:true,code:"LU 7",py:"Lièquē",en:"Broken Sequence",mer:"Lung meridian",preg:"gentle",concerns:["neck","sinus","headache"],where:["desk","go"],
+ {id:"LU7",view:"front",x:248,y:300,bi:true,code:"LU 7",py:"Lièquē",en:"Broken Sequence",mer:"Lung meridian",preg:"gentle",concerns:["neck","sinus","headache","hayfever"],where:["desk","go"],
   find:["Turn your palm up and find the thumb side of your wrist.","Interlace the webs of both hands, thumbs to index fingers.","Where your top index fingertip lands, just above the wrist bone, is the point."],
   press:"Press with your index fingertip into the small groove, or rub gently along it.",hold:60,
   uses:"Used for a stiff neck, head colds, and headaches at the back of the head.",
   caution:"Gentle pressure. Avoid with a wrist injury."},
- {id:"HT7",view:"front",x:233,y:314,bi:true,code:"HT 7",py:"Shénmén",en:"Spirit Gate",mer:"Heart meridian",preg:"safe",concerns:["stress","sleep"],where:["desk","bed","go"],
+ {id:"HT7",view:"front",x:233,y:314,bi:true,code:"HT 7",py:"Shénmén",en:"Spirit Gate",mer:"Heart meridian",preg:"safe",concerns:["stress","sleep","hbp","chemo"],where:["desk","bed","go"],
   find:["Turn your palm up and find the wrist crease.","Follow it toward the pinky side.","The point is in the small hollow just inside the tendon at the edge of the wrist."],
   press:"Press gently with your thumb tip. This point responds to light, patient pressure.",hold:60,
-  uses:"Used for restlessness, nervous tension, and trouble falling asleep.",
+  uses:"Used for restlessness, nervous tension, and trouble falling asleep. Included in small studies on blood pressure.",
   caution:"Avoid with a wrist injury or carpal tunnel flare-up."},
- {id:"GB34",view:"front",x:193,y:452,bi:true,code:"GB 34",py:"Yánglíngquán",en:"Yang Mound Spring",mer:"Gallbladder meridian",preg:"gentle",concerns:["neck","back"],where:["desk","bed"],
+ {id:"PC7",view:"front",x:241,y:313,bi:true,code:"PC 7",py:"Dàlíng",en:"Great Mound",mer:"Pericardium meridian",preg:"gentle",concerns:["carpal"],where:["desk","go"],
+  find:["Turn your palm up and find the wrist crease.","The point is at the middle of the crease, between the two tendons."],
+  press:"Press lightly with your thumb tip. The median nerve runs right under this spot, so keep the pressure gentle.",hold:45,
+  uses:"Traditionally used for wrist pain and tingling from typing and phone use.",
+  caution:"Gentle pressure only. Stop if tingling or numbness gets worse."},
+ {id:"GB34",view:"front",x:193,y:452,bi:true,code:"GB 34",py:"Yánglíngquán",en:"Yang Mound Spring",mer:"Gallbladder meridian",preg:"gentle",concerns:["neck","back","kneeoa"],where:["desk","bed"],
   find:["Sit with your knee bent.","Find the bony knob on the outside of your leg, just below the knee (the head of the fibula).","The point is in the hollow just in front of and below that knob."],
   press:"Press firmly with your thumb.",hold:60,
-  uses:"Traditionally the go-to point for tight muscles and tendons anywhere, including a stiff neck and sides.",
+  uses:"Traditionally the go-to point for tight muscles and tendons anywhere, including a stiff neck and sides. Also used for pain on the outer side of the knee.",
   caution:"There is a nerve just behind this spot. If you feel tingling down the leg, move slightly forward."},
- {id:"ST36",view:"front",x:187,y:466,bi:true,code:"ST 36",py:"Zúsānlǐ",en:"Leg Three Miles",mer:"Stomach meridian",preg:"gentle",concerns:["energy","digestion","nausea"],where:["desk","bed"],
+ {id:"ST35",view:"front",x:188,y:442,bi:true,code:"ST 35",py:"Dúbí",en:"Calf's Nose",mer:"Stomach meridian",preg:"gentle",concerns:["kneeoa"],where:["desk","bed"],
+  find:["Sit with your knee bent at about 90°.","Find the bottom edge of your kneecap.","The point is in the hollow just below the kneecap, on the outer side of the thick tendon."],
+  press:"Press gently with your thumb or middle finger, angling slightly in under the kneecap.",hold:60,
+  uses:"Used for knee pain and stiffness, especially on stairs or after sitting.",
+  caution:"Skip if the knee is hot, swollen, or recently injured."},
+ {id:"SP9",view:"front",x:166,y:452,bi:true,code:"SP 9",py:"Yīnlíngquán",en:"Yin Mound Spring",mer:"Spleen meridian",preg:"gentle",concerns:["kneeoa","digestion"],where:["desk","bed"],
+  find:["Run your thumb up the inside edge of your shinbone toward the knee.","It stops in a hollow under the bony bump below the inner knee.","The point is in that hollow."],
+  press:"Press firmly with your thumb, angled up under the bone.",hold:60,
+  uses:"Used for inner knee pain, heavy or puffy legs, and bloating.",
+  caution:"Avoid over varicose veins or a swollen leg."},
+ {id:"ST36",view:"front",x:187,y:466,bi:true,code:"ST 36",py:"Zúsānlǐ",en:"Leg Three Miles",mer:"Stomach meridian",preg:"gentle",concerns:["energy","digestion","nausea","kneeoa","constipation","ibs","chemo"],where:["desk","bed"],
   guide:{from:[181,440],label:"4 fingers",lx:163,ly:455},
   find:["Sit with your knee bent.","Lay four fingers below the bottom of your kneecap.","Move one finger-width outward from the shinbone. Lift your toes and you'll feel the muscle tighten."],
   press:"Press firmly with your thumb or a knuckle. It is often pleasantly achy.",hold:120,
-  uses:"One of the most-used points. Traditionally used for fatigue, sluggish digestion, and nausea.",
+  uses:"One of the most-used points. Traditionally used for fatigue, sluggish digestion, and nausea. Also used for knee pain, and in IBS and cancer-care routines.",
   caution:"Avoid over bruises, varicose veins, or a recent leg injury."},
- {id:"SP6",view:"front",x:168,y:547,bi:true,code:"SP 6",py:"Sānyīnjiāo",en:"Three Yin Intersection",mer:"Spleen meridian",preg:"avoid",concerns:["sleep","digestion"],where:["bed"],
+ {id:"SP6",view:"front",x:168,y:547,bi:true,code:"SP 6",py:"Sānyīnjiāo",en:"Three Yin Intersection",mer:"Spleen meridian",preg:"avoid",concerns:["sleep","digestion","ibs"],where:["bed"],
   guide:{from:[167,578],label:"4 fingers",lx:174,ly:565},
   find:["Find the bump of your inner ankle bone.","Lay four fingers up the inside of your leg from its top.","The point is just behind the edge of the shinbone, at the top of your fourth finger."],
   press:"Press firmly with your thumb into the edge of the bone.",hold:60,
-  uses:"Used for trouble sleeping and digestion.",
+  uses:"Used for trouble sleeping and digestion. Included in an IBS self-acupressure trial.",
   caution:"Traditionally avoided throughout pregnancy."},
- {id:"LV3",view:"front",x:175,y:598,bi:true,code:"LV 3",py:"Tàichōng",en:"Great Rushing",mer:"Liver meridian",preg:"avoid",concerns:["stress","headache","eyes"],where:["bed"],
+ {id:"LV3",view:"front",x:175,y:598,bi:true,code:"LV 3",py:"Tàichōng",en:"Great Rushing",mer:"Liver meridian",preg:"avoid",concerns:["stress","headache","eyes","migraine","ibs","hbp"],where:["bed"],
   find:["Find the web between your big toe and second toe on top of the foot.","Slide your finger back toward the ankle.","Stop in the hollow where the two bones meet, about two finger-widths from the web."],
   press:"Press with your thumb, angled slightly toward the second toe bone. It is often tender.",hold:60,
-  uses:"Used for stress and irritability, tension headaches, and tired eyes. Often paired with LI 4.",
+  uses:"Used for stress and irritability, tension headaches, and tired eyes. Often paired with LI 4. Included in small studies on blood pressure, and in IBS routines.",
   caution:"Many practitioners avoid strong stimulation here during pregnancy."},
  // BACK
- {id:"GB20",view:"back",x:164,y:88,bi:true,code:"GB 20",py:"Fēngchí",en:"Wind Pool",mer:"Gallbladder meridian",preg:"gentle",concerns:["headache","neck","eyes"],where:["desk","bed"],
+ {id:"GB20",view:"back",x:164,y:88,bi:true,code:"GB 20",py:"Fēngchí",en:"Wind Pool",mer:"Gallbladder meridian",preg:"gentle",concerns:["headache","neck","eyes","migraine"],where:["desk","bed"],
   find:["Put your fingers at the base of your skull, behind the ears.","Slide them toward the center until they drop into two hollows.","The hollows sit between the big neck muscles, about level with your earlobes."],
   press:"Hook both thumbs into the hollows and press upward toward the center of your head. Let your head tilt back slightly.",hold:90,
   uses:"The go-to point for tension headaches, a stiff neck, and eye strain from screens.",
@@ -373,20 +394,26 @@ const POINTS = [
   press:"Make loose fists and rub briskly until warm, or lie on two tennis balls in a sock.",hold:90,
   uses:"Used for a dull lower-back ache and low energy.",
   caution:"Never press on the spine itself. Back pain with numbness, leg weakness, or bladder changes needs urgent care."},
- {id:"LI4",view:"back",x:250,y:331,bi:true,code:"LI 4",py:"Hégǔ",en:"Joining Valley",mer:"Large Intestine meridian",preg:"avoid",concerns:["headache","jaw","sinus"],where:["desk","bed","go"],
+ {id:"LI4",view:"back",x:250,y:331,bi:true,code:"LI 4",py:"Hégǔ",en:"Joining Valley",mer:"Large Intestine meridian",preg:"avoid",concerns:["headache","jaw","sinus","migraine","carpal","constipation","hayfever"],where:["desk","bed","go"],
   find:["Look at the back of your hand.","Press your thumb against your index finger. A mound of muscle pops up.","The point is at the top of that mound. Relax your hand and press toward the index finger bone."],
   press:"Pinch the web with your other thumb on top and index finger underneath. Press firmly.",hold:60,
-  uses:"The classic point for headaches, toothache and jaw tension, and general aches.",
+  uses:"The classic point for headaches, toothache and jaw tension, and general aches. Traditionally also used for constipation and hay fever.",
   caution:"Traditionally avoided in pregnancy because it may stimulate contractions."},
  {id:"SI3",view:"back",x:239,y:343,bi:true,code:"SI 3",py:"Hòuxī",en:"Back Stream",mer:"Small Intestine meridian",preg:"gentle",concerns:["neck","back"],where:["desk","go"],
   find:["Make a loose fist.","Look at the pinky side of your hand.","The point is at the end of the crease that forms there, just behind the knuckle."],
   press:"Press with your thumb, or roll the edge of your fist along a desk.",hold:60,
   uses:"Used for a stiff neck you can't turn and upper-back tension.",
   caution:"Avoid with a hand injury."},
- {id:"BL40",view:"back",x:180,y:432,bi:true,code:"BL 40",py:"Wěizhōng",en:"Middle of the Crook",mer:"Bladder meridian",preg:"gentle",concerns:["back"],where:["bed"],
+ {id:"TE6",view:"back",x:237,y:283,bi:true,code:"TE 6",py:"Zhīgōu",en:"Branch Ditch",mer:"Triple Energizer meridian",preg:"gentle",concerns:["constipation"],where:["desk","bed","go"],
+  guide:{from:[241,313],label:"4 fingers",lx:248,ly:300},
+  find:["Turn your palm down and find the middle of the wrist crease on the back of your wrist.","Lay four fingers up your forearm from it.","The point is just above your fourth finger, in the groove between the two forearm bones."],
+  press:"Press firmly with your thumb into the groove between the bones.",hold:60,
+  uses:"Traditionally used for constipation and for aches along the side of the body.",
+  caution:"Avoid with a wrist or forearm injury."},
+ {id:"BL40",view:"back",x:180,y:432,bi:true,code:"BL 40",py:"Wěizhōng",en:"Middle of the Crook",mer:"Bladder meridian",preg:"gentle",concerns:["back","kneeoa"],where:["bed"],
   find:["Sit and let your leg relax.","Find the crease at the back of your knee.","The point is in the middle of the crease, between the two tendons."],
   press:"Use light fingertip circles only. Keep the leg relaxed.",hold:60,
-  uses:"Traditionally used for lower-back pain and stiff knees.",
+  uses:"Traditionally used for lower-back pain and stiff knees. Also used for knee pain at the back of the knee.",
   caution:"Large blood vessels and nerves sit here. Light pressure only. Skip with varicose veins, swelling, or a cyst behind the knee."},
  {id:"BL57",view:"back",x:180,y:500,bi:true,code:"BL 57",py:"Chéngshān",en:"Supporting Mountain",mer:"Bladder meridian",preg:"gentle",concerns:["back"],where:["bed"],
   find:["Stand and rise up onto your toes.","Look at the back of your calf. The muscle forms an upside-down V.","The point is at the tip of that V, in the middle of the calf."],
@@ -398,7 +425,12 @@ const POINTS = [
   press:"Pinch gently, thumb on the point and fingers on the inner ankle.",hold:60,
   uses:"Used for lower-back pain and headaches at the back of the head.",
   caution:"Traditionally avoided in pregnancy."},
- {id:"KI1",view:"back",x:176,y:610,bi:true,code:"KI 1",py:"Yǒngquán",en:"Gushing Spring",mer:"Kidney meridian",preg:"gentle",concerns:["sleep","stress"],where:["bed"],sole:true,
+ {id:"KI3",view:"back",x:167,y:585,bi:true,code:"KI 3",py:"Tàixī",en:"Great Stream",mer:"Kidney meridian",preg:"gentle",concerns:["hbp","energy"],where:["bed"],
+  find:["Find the bump of your inner ankle bone.","Slide your finger back toward the Achilles tendon.","The point is in the hollow halfway between them, level with the tip of the bone."],
+  press:"Press gently with your thumb. You may feel a pulse here.",hold:90,
+  uses:"Included in small studies on blood pressure, and traditionally used for low energy and a weak lower back.",
+  caution:"Avoid with an ankle sprain."},
+ {id:"KI1",view:"back",x:176,y:610,bi:true,code:"KI 1",py:"Yǒngquán",en:"Gushing Spring",mer:"Kidney meridian",preg:"gentle",concerns:["sleep","stress","chemo"],where:["bed"],sole:true,
   find:["Look at the sole of your foot and curl your toes.","A dip forms in the front third of the sole, just behind the ball of the foot.","The point is in that dip, in line with the second toe."],
   press:"Press firmly with your thumb, or roll the sole slowly over a tennis ball.",hold:90,
   uses:"Used to settle down at night: grounding, calming, and getting to sleep.",
@@ -413,12 +445,20 @@ const REFS = [
  {id:5,t:"Effect of acupressure and trigger points in treating headache: a randomized controlled trial",a:"Hsieh LL, Liou HH, Lee LH, Chen TH, Yen AM",j:"American Journal of Chinese Medicine, 2010",n:"A small trial (28 people) in which acupressure eased chronic headache more than a muscle relaxant.",u:"https://pubmed.ncbi.nlm.nih.gov/20128040/"},
  {id:6,t:"Investigation of 2 types of self-administered acupressure for persistent cancer-related fatigue in breast cancer survivors",a:"Zick SM, Sen A, Wyatt GK, Murphy SL, Arnedt JT, Harris RE",j:"JAMA Oncology, 2016",n:"Self-acupressure done at home reduced fatigue, and the relaxing routine also improved sleep, versus usual care.",u:"https://pubmed.ncbi.nlm.nih.gov/27388752/"},
  {id:7,t:"WHO Standard Acupuncture Point Locations in the Western Pacific Region",a:"World Health Organization",j:"WHO Regional Office for the Western Pacific, 2008",n:"The reference used for point locations and cun measurements on this page.",u:"https://medbox.org/document/who-standard-acupuncture-point-locations-in-the-western-pacific-region"},
- {id:8,t:"The safety of obstetric acupuncture: forbidden points revisited",a:"Carr DJ",j:"Acupuncture in Medicine, 2015",n:"Reviews the traditional list of points avoided in pregnancy. This page takes the cautious route and flags them.",u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC4680134/"}
+ {id:8,t:"The safety of obstetric acupuncture: forbidden points revisited",a:"Carr DJ",j:"Acupuncture in Medicine, 2015",n:"Reviews the traditional list of points avoided in pregnancy. This page takes the cautious route and flags them.",u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC4680134/"},
+ {id:9,t:"Acupuncture for the prevention of episodic migraine",a:"Linde K, Allais G, Brinkhaus B, et al.",j:"Cochrane Database of Systematic Reviews, 2016",n:"Acupuncture with needles reduced how often migraines happened, about as well as preventive drugs. It studied acupuncture, not acupressure.",u:"https://pubmed.ncbi.nlm.nih.gov/27351677/"},
+ {id:10,t:"Self-administered acupressure for knee osteoarthritis in middle-aged and older adults: a pilot randomized controlled trial",a:"Cheung DST, Yeung WF, Suen LKP, et al.",j:"Acupuncture in Medicine, 2019",n:"Self-acupressure was easy to learn and acceptable for 35 people with knee arthritis; pain fell, but not clearly more than with education alone.",u:"https://research.polyu.edu.hk/en/publications/self-administered-acupressure-for-knee-osteoarthritis-in-middle-a/"},
+ {id:11,t:"Effect of perineal self-acupressure on constipation: a randomized controlled trial",a:"Abbott R, Ayres I, Hui E, Hui KK",j:"Journal of General Internal Medicine, 2015",n:"In 100 people with constipation, pressing on the perineum improved bowel function and quality of life compared with standard advice alone.",u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC4371002/"},
+ {id:12,t:"Self-administered active versus sham acupressure for diarrhea predominant irritable bowel syndrome: a nurse-led randomized clinical trial",a:"Asal MGR, El-Sayed AAI, Alsenany SA, Ramzy ZH, Dawood RFA",j:"BMC Nursing, 2025",n:"In 63 people with IBS-D, daily self-acupressure at CV 12, ST 25, SP 6, and ST 36 eased symptoms more than sham pressure.",u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC11776273/"},
+ {id:13,t:"Effectiveness of acupressure therapy in lowering blood pressure in patients with hypertension: a systematic review",a:"Restawan IG, Sjattar EL, Irwan AM",j:"Clinical Epidemiology and Global Health, 2023",n:"Nine small studies; pressing LV 3, HT 7, and KI 3 lowered readings, most after about four weeks. An add-on, not a replacement for medication.",u:"https://doaj.org/article/85e32e810e4f48c69a52bec8cc8f1288"},
+ {id:14,t:"Acupuncture-point stimulation for chemotherapy-induced nausea and vomiting",a:"Ezzo J, Vickers A, Richardson MA, et al.",j:"Journal of Clinical Oncology, 2005",n:"Acupressure eased acute nausea during chemotherapy but did not reduce vomiting; the acupressure trials had no placebo control.",u:"https://synapse.mskcc.org/synapse/works/42030"},
+ {id:15,t:"Feasibility of self-administered acupressure for allergic rhinitis: a pilot randomized controlled trial",a:"Liang Y, Lenon GB, Li M, Yang AWH",j:"Acupuncture in Medicine, 2022",n:"Self-acupressure for hay fever was doable and appeared safe; a larger trial is needed to show whether it works.",u:"https://search.pedro.org.au/search-results/record-detail/68516"},
+ {id:16,t:"Hypertensive crisis: What are the symptoms?",a:"Mayo Clinic",j:"Mayo Clinic",n:"Source for the emergency threshold: 180/120 or higher with chest pain, shortness of breath, stroke signs, or vision changes.",u:"https://www.mayoclinic.org/hypertensive-crisis/expert-answers/faq-20058491"}
 ];
 const POINT_REFS = {PC6:[1]};
-const CONCERN_REFS = {sleep:[2,6],stress:[3],back:[4],headache:[5],energy:[6],nausea:[1]};
+const CONCERN_REFS = {sleep:[2,6],stress:[3],back:[4],headache:[5],energy:[6],nausea:[1],migraine:[9],kneeoa:[10],constipation:[11],ibs:[12],hbp:[13],chemo:[14,6],hayfever:[15]};
 function refLinks(ids){ return ids.map(i=>{const r=REFS.find(x=>x.id===i); return `<a href="${r.u}" target="_blank" rel="noopener">[${i}] ${shortRef(r)}</a>`;}).join(" · "); }
-const SHORT = {1:"Lee et al., Cochrane 2025",2:"Waits et al., 2018",3:"Au et al., 2015",4:"Hsieh et al., BMJ 2006",5:"Hsieh et al., 2010",6:"Zick et al., JAMA Oncology 2016",7:"WHO point locations, 2008",8:"Carr, 2015"};
+const SHORT = {1:"Lee et al., Cochrane 2025",2:"Waits et al., 2018",3:"Au et al., 2015",4:"Hsieh et al., BMJ 2006",5:"Hsieh et al., 2010",6:"Zick et al., JAMA Oncology 2016",7:"WHO point locations, 2008",8:"Carr, 2015",9:"Linde et al., Cochrane 2016",10:"Cheung et al., 2019",11:"Abbott et al., 2015",12:"Asal et al., 2025",13:"Restawan et al., 2023",14:"Ezzo et al., 2005",15:"Liang et al., 2022",16:"Mayo Clinic"};
 function shortRef(r){ return SHORT[r.id]; }
 function sup(i){ const r=REFS.find(x=>x.id===i); return `<a class="ref" href="${r.u}" target="_blank" rel="noopener" title="${r.t}">[${i}]</a>`; }
 
@@ -426,7 +466,30 @@ const CONCERNS = [
  ["headache","Headache"],["neck","Neck & shoulders"],["back","Low back"],["stress","Stress & anxiety"],["sleep","Sleep"],
  ["eyes","Eye strain"],["jaw","Jaw & teeth"],["sinus","Sinus & congestion"],["nausea","Nausea & motion"],["digestion","Digestion"],["energy","Low energy"]
 ];
-const CNAME = Object.fromEntries(CONCERNS);
+const CONDITIONS = [
+ ["migraine","Migraine"],["kneeoa","Knee arthritis"],["carpal","Carpal tunnel & RSI"],["constipation","Constipation"],
+ ["ibs","IBS"],["hbp","High blood pressure"],["chemo","Cancer treatment side effects"],["hayfever","Hay fever"]
+];
+const CNAME = Object.fromEntries([...CONCERNS, ...CONDITIONS]);
+/* What the research says, and when to see a clinician, for each condition */
+const COND_INFO = {
+ migraine:{note:`Acupuncture with needles reduced how often migraines happened in a Cochrane review ${sup(9)}; acupressure itself hasn't been well tested. Use these points alongside your usual migraine plan, ideally early in an attack.`,
+  warn:"Get urgent care for the worst headache of your life, or a headache with new weakness, confusion, trouble speaking, or vision loss. See a clinician if attacks are getting more frequent."},
+ kneeoa:{note:`In a small pilot trial, people learned self-acupressure in two sessions and found it easy to keep up. Pain dropped, but not clearly more than with education alone ${sup(10)}. Pair it with the exercise and activity your clinician recommends.`,
+  warn:"See a clinician if the knee is hot, red, or very swollen, gives way, or you can't put weight on it."},
+ carpal:{note:"There's little good research on acupressure for carpal tunnel, so these uses are traditional. Press gently near the wrist crease, because the median nerve runs right under PC 7 and PC 6.",
+  warn:"See a clinician soon if numbness is constant, your hand feels weak, or you drop things. Long-term pressure on the nerve can cause lasting damage."},
+ constipation:{note:`The best trial didn't use points on this chart. In it, 100 people pressed firmly on the perineum (the skin between the anus and genitals) when they felt the urge to go, and reported better bowel function and quality of life ${sup(11)}. The points here are traditional extras.`,
+  warn:"See a clinician for blood in your stool, unexplained weight loss, severe belly pain, or a lasting change in your bowel habits."},
+ ibs:{note:`In a 2025 trial of 63 people with diarrhea-predominant IBS, daily self-acupressure at CV 12, ST 25, SP 6, and ST 36 eased symptoms more than sham pressure ${sup(12)}. It hasn't been tested much for other types of IBS.`,
+  warn:"IBS should be diagnosed by a clinician first. See one for blood in your stool, weight loss, fever, symptoms that wake you at night, or symptoms that start after age 50."},
+ hbp:{note:`A 2023 review of nine small studies found that pressing LV 3, HT 7, and KI 3 lowered blood pressure readings, most after about four weeks ${sup(13)}. Acupressure is an add-on, not a replacement for medication.`,
+  warn:`Never stop or change blood pressure medication without your clinician. Call emergency services if your reading is 180/120 or higher with chest pain, shortness of breath, numbness, trouble speaking, or vision changes ${sup(16)}.`},
+ chemo:{note:`In a review of chemotherapy trials, acupressure eased acute nausea, though not vomiting ${sup(14)}. In a trial with breast cancer survivors, a daily self-acupressure routine reduced fatigue and improved sleep ${sup(6)}. Use it alongside your anti-nausea medicine, not instead of it.`,
+  warn:"Check with your oncology team first, especially if your platelet count is low, you have a port or lymphedema, or your skin is sensitive from radiation. Don't press on a limb with lymphedema or on treated skin."},
+ hayfever:{note:`A pilot trial found self-acupressure for hay fever was doable and appeared safe. A larger trial is still needed to show whether it works ${sup(15)}.`,
+  warn:"Get urgent care for wheezing, trouble breathing, or swelling of the lips, tongue, or throat."}
+};
 /* Step 2 is "where are you right now?" Each place lists the points you can reasonably reach there. */
 const PHASES = [
  {id:"desk",name:"At your desk",days:"seated",feel:"Head, neck, shoulders, arms, and hands are all within reach while you sit.",tip:"Set a reminder to stop for two minutes every hour or so. Start with GB 20 for the neck, then LI 4 or PC 6 on the hands.",pts:[]},
@@ -578,9 +641,14 @@ function renderHome(){
     <div><p class="eyebrow">Find your points</p><h2>Your body, <i>point by point</i></h2></div>
 
     <div class="step">
-      <div class="stephead"><span class="stepn">1</span><h3>What are you feeling?</h3></div>
+      <div class="stephead"><span class="stepn">1</span><h3>What are you dealing with?</h3></div>
+      <p class="grouplabel">Symptoms</p>
       <div class="chips" role="group" aria-label="Choose a symptom">
         ${CONCERNS.map(([k,v])=>`<button class="chip" data-s="${k}" aria-pressed="${state.symptom===k}">${v}</button>`).join("")}
+      </div>
+      <p class="grouplabel">Health conditions</p>
+      <div class="chips" role="group" aria-label="Choose a health condition">
+        ${CONDITIONS.map(([k,v])=>`<button class="chip" data-s="${k}" aria-pressed="${state.symptom===k}">${v}</button>`).join("")}
       </div>
     </div>
 
@@ -596,6 +664,7 @@ function renderHome(){
     ${state.symptom?`<div class="step results">
       <div class="stephead"><span class="stepn">3</span><h3>Your points</h3></div>
       <p class="resline">${summary}. Tap one to see where it is and how to press it.</p>
+      ${COND_INFO[state.symptom]?`<div class="condnote"><div><b>What the research says</b><p>${COND_INFO[state.symptom].note}</p></div><div class="condwarn"><b>See a clinician</b><p>${COND_INFO[state.symptom].warn}</p></div></div>`:""}
       ${ph?`<div class="phasenote"><b>${ph.name}</b>${ph.feel} ${ph.tip}</div>`:""}
       <div class="reslist">${results.map(card).join("")}</div>
     </div>`:""}
@@ -607,7 +676,7 @@ function renderHome(){
       </div>
     </details>
     <div class="two">
-      <div><h3>What it can and can't do</h3>The clearest evidence is for nausea at PC 6 ${sup(1)}. Reviews and trials also support acupressure for sleep quality ${sup(2)}, anxiety before procedures ${sup(3)}, chronic low back pain ${sup(4)}, and headache ${sup(5)}, and a home routine helped fatigue ${sup(6)}. Most of these studies are small, and they test routines rather than single points, so most point-by-point uses here are traditional.</div>
+      <div><h3>What it can and can't do</h3>The clearest evidence is for nausea at PC 6 ${sup(1)}. Reviews and trials also support acupressure for sleep quality ${sup(2)}, anxiety before procedures ${sup(3)}, chronic low back pain ${sup(4)}, and headache ${sup(5)}, and a home routine helped fatigue ${sup(6)}. Most of these studies are small, and they test routines rather than single points, so most point-by-point uses here are traditional. For a health condition, use acupressure alongside your treatment, never instead of it.</div>
       <div><h3>Get medical help if</h3><ul>
         <li>A headache is sudden and severe, the worst you've had, or comes with fever, a stiff neck, confusion, or vision changes (urgent)</li>
         <li>You have chest pain, trouble breathing, or face, arm, or speech changes (call emergency services)</li>
@@ -679,7 +748,7 @@ function evidence(p){
   if(POINT_REFS[p.id]) rows.push(`<span><b>Studied at this point:</b> ${refLinks(POINT_REFS[p.id])}</span>`);
   else rows.push(`<span><b>No dedicated trials for this point.</b> Its uses here come from traditional practice.</span>`);
   const cr=[...new Set(p.concerns.flatMap(c=>CONCERN_REFS[c]||[]))];
-  if(cr.length) rows.push(`<span><b>Reviews of acupressure for these symptoms in general:</b> ${refLinks(cr)}</span>`);
+  if(cr.length) rows.push(`<span><b>Research on these symptoms and conditions in general:</b> ${refLinks(cr)}</span>`);
   rows.push(`<span><b>Location:</b> ${refLinks([7])}${p.preg==="avoid"?` · <b>Pregnancy flag:</b> ${refLinks([8])}`:""}</span>`);
   return rows.join("");
 }

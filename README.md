@@ -1,6 +1,9 @@
 # Everyday Acupressure
 
-An interactive acupressure guide for everyday issues: headaches, neck and shoulder tension, low back pain, stress, sleep, eye strain, jaw tension, sinus congestion, nausea and motion sickness, digestion, and low energy.
+An interactive acupressure guide for everyday issues and common health conditions.
+
+- **Symptoms:** headaches, neck and shoulder tension, low back pain, stress, sleep, eye strain, jaw tension, sinus congestion, nausea and motion sickness, digestion, and low energy.
+- **Health conditions:** migraine, knee arthritis, carpal tunnel and RSI, constipation, IBS, high blood pressure, cancer treatment side effects, and hay fever.
 
 Pick what you're feeling and where you are right now, then tap a point on the body chart to zoom in. Each point shows how to find it, how to press it, a guided hold timer, cautions, and the research behind it.
 
@@ -9,10 +12,10 @@ It's a companion to the [Acupressure Guide for Women](../acupressure-guide), whi
 ## Features
 
 - **Symptom-first flow**
-  1. Choose what you're feeling.
+  1. Choose a symptom or a health condition. Each condition shows what the research says and when to see a clinician.
   2. Optionally choose where you are: **at your desk**, **in bed**, or **on the go**. Only places with points you can reach there are shown. "On the go" sticks to hands, wrists, and face, so you can press them discreetly.
   3. Get a short list of points and tap one to open it.
-- **Front and back body chart** with 28 points that zoom in when tapped. Dashed measuring guides (for example, "4 fingers") show how to find a point from a landmark.
+- **Front and back body chart** with 33 points that zoom in when tapped. Dashed measuring guides (for example, "4 fingers") show how to find a point from a landmark.
 - **Guided hold timer** with breathing cues and a prompt to switch sides for paired points.
 - **Pregnancy safety.** A note at the top of the page, a reminder on every point, and a "Pregnant or could be" switch that marks points traditionally avoided in pregnancy.
 - **Evidence labels.** Each point says whether it has been studied directly or comes from traditional practice, with links to the sources.
@@ -38,7 +41,7 @@ The site will be live at `https://<your-username>.github.io/<repo-name>/`.
 
 The points, symptoms, places, and references are plain JavaScript arrays near the top of the `<script>` block in `index.html` (`POINTS`, `CONCERNS`, `PHASES`, `REFS`).
 
-- To add a point, add an entry to `POINTS`. Its `where` list (`desk`, `bed`, `go`) decides which "Where are you?" options include it.
+- To add a point, add an entry to `POINTS`. Its `concerns` list holds the symptom and condition keys it appears under, and its `where` list (`desk`, `bed`, `go`) decides which "Where are you?" options include it.
 - `PHASES` holds the three places. The name is shared with the women's guide, where the same slot holds cycle phases.
 
 ## Sources
@@ -51,12 +54,20 @@ The points, symptoms, places, and references are plain JavaScript arrays near th
 6. Zick SM, et al. *Investigation of 2 types of self-administered acupressure for persistent cancer-related fatigue in breast cancer survivors.* JAMA Oncology, 2016.
 7. World Health Organization. *WHO Standard Acupuncture Point Locations in the Western Pacific Region.* 2008.
 8. Carr DJ. *The safety of obstetric acupuncture: forbidden points revisited.* Acupuncture in Medicine, 2015.
+9. Linde K, et al. *Acupuncture for the prevention of episodic migraine.* Cochrane Database of Systematic Reviews, 2016.
+10. Cheung DST, et al. *Self-administered acupressure for knee osteoarthritis in middle-aged and older adults: a pilot randomized controlled trial.* Acupuncture in Medicine, 2019.
+11. Abbott R, Ayres I, Hui E, Hui KK. *Effect of perineal self-acupressure on constipation: a randomized controlled trial.* Journal of General Internal Medicine, 2015.
+12. Asal MGR, et al. *Self-administered active versus sham acupressure for diarrhea predominant irritable bowel syndrome.* BMC Nursing, 2025.
+13. Restawan IG, Sjattar EL, Irwan AM. *Effectiveness of acupressure therapy in lowering blood pressure in patients with hypertension: a systematic review.* Clinical Epidemiology and Global Health, 2023.
+14. Ezzo J, et al. *Acupuncture-point stimulation for chemotherapy-induced nausea and vomiting.* Journal of Clinical Oncology, 2005.
+15. Liang Y, Lenon GB, Li M, Yang AWH. *Feasibility of self-administered acupressure for allergic rhinitis: a pilot randomized controlled trial.* Acupuncture in Medicine, 2022.
+16. Mayo Clinic. *Hypertensive crisis: What are the symptoms?*
 
 Links to each source are in the app.
 
 ## Medical disclaimer
 
-This guide is for general information and self-care only. It is not medical advice and does not replace a diagnosis or treatment from a qualified clinician. If you are pregnant or think you might be, don't use acupressure before consulting your OB-GYN or midwife.
+This guide is for general information and self-care only. For a health condition, use acupressure alongside your treatment, never instead of it. It is not medical advice and does not replace a diagnosis or treatment from a qualified clinician. If you are pregnant or think you might be, don't use acupressure before consulting your OB-GYN or midwife.
 
 ## Feedback
 
