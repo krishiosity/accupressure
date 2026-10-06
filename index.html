@@ -204,6 +204,9 @@ ol.refs li::marker{font-family:var(--mono);color:var(--accent);font-size:12px}
 .evidence{background:var(--lavgray);border:1px solid var(--lavgray-line);border-radius:6px;padding:14px 16px}
 .evidence .fine{color:var(--ink)}
 
+/* Leaf photo behind the page (user's photo), faded into the paper color */
+.leaves{position:fixed;inset:0;pointer-events:none;z-index:0;background:url("assets/leaves.webp") center/cover no-repeat;opacity:.16}
+.leaves::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(243,247,242,.15),rgba(243,247,242,.55))}
 .sidenote{margin:18px 0 4px}
 .sidenote ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
 .sidenote li{position:relative;padding-left:16px;font-size:13.5px;color:var(--muted)}
@@ -217,6 +220,7 @@ img{max-width:100%}
 </style>
 </head>
 <body>
+<div class="leaves" aria-hidden="true"></div>
 <div class="wrap">
   <header class="top">
     <h1>Everyday <em>Acupressure</em></h1>
